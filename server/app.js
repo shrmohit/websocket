@@ -31,6 +31,10 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("user connected");
   console.log("userId", socket.id);
+
+  socket.on("message", (message) => {
+    console.log("Message", message);
+  });
 });
 
 server.listen(port, () => {
