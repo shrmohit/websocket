@@ -31,9 +31,12 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("user connected");
   console.log("userId", socket.id);
+  // first event send to client
+  socket.emit("welcome", "Welcome to the server");
+  //first event received by server from client
 
-  socket.on("message", (message) => {
-    console.log("Message", message);
+  socket.on("message", (data) => {
+    console.log(data);
   });
 });
 
